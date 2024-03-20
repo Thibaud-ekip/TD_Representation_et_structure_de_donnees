@@ -38,13 +38,13 @@ if __name__ == '__main__':     #test
 
 
 H=Fraction(0,1)
-for i in range (1,1000):
+for i in range (1,1000):    #doing it until 10000 exceeds the limit of integer
     H.add(Fraction(1,i))
 print(H.value)
 
 
 L=Fraction(0,1)
-for i in range (1000):
+for i in range (1000):      #doing it until 10000 exceeds the limit of integer
     L.add(Fraction((-1)**i,2*i+1))
 print(L.value)
 
