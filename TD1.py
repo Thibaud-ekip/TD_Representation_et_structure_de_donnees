@@ -1,7 +1,7 @@
 words=[]
 f=open('frenchssaccent.dic','r')
 for ligne in f:
-    words.append(ligne[O:len(ligne)-1])
+    words.append(ligne[0:len(ligne)-1])
 f.close()
 
 #Question 1 : We look through the whole list of words.For each word we test if its length is greater than the longest word found before. If it is and all  its letters are in the list of letters that we have it is the new longest word.
