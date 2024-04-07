@@ -47,6 +47,8 @@ class Hashtable:
         if sum([len(box) for box in self.__table])>1.2*self.__length:
             self.resize()
 
+    def length(self):
+        return self.__length
 
 def h(str):
         res=0
@@ -63,6 +65,9 @@ if __name__ == '__main__':
     H.put('a',1)
     H.put('b',2)
     assert(H.get('a')==1)
+    H.put('c',3)
+    H.sizeup()
+    assert(H.length()==4)
     H.repartition(1.5)
 
 
