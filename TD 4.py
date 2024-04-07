@@ -37,15 +37,19 @@ class Hashtable:
 
     def resize(self):
         if sum([len(box) for box in self.__table])>1.2*self.__length:
-            self.__lentgh = self.__length*2
-            self.__table += [[] for i in range (self.__length/2,self.__length+1)]
+            h = Hashtable(self.__hash,2*self.__length)
+            for box in self.__table:
+                for couple in box:
+                    h.put(couple[0],couple[1])
+            self.__table = h.__table
+            self.__length = 2*self.__length
 
 
 def h(str):
         res=0
         i=0
-        for c in str:
-            res+=ord(c)*33**i
+        for letter in str:
+            res+=ord(letter)*33**i
             i+=1
         return res
 
