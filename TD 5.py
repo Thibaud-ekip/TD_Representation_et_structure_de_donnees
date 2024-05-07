@@ -19,7 +19,7 @@ class Target:
         self.__label_score = Label(self.__root, text=f"score : {self.__score}")
         self.__label_score.pack(side=BOTTOM, padx=5, pady=5)
         self.__tries = 5
-        self.__root.bind_all('f', self.__oneshot)
+        self.__root.bind_all('f', self.__oneshot)  #shoot with the 'f' touch
 
 
 
@@ -31,7 +31,7 @@ class Target:
         self.__canvas.create_oval(x - r, y + r, x + r, y - r, outline='red', fill=color)
 
     def draw_target(self):
-        """Draw the target on the canvas."""
+        """Draw the target in the canvas."""
         self.__canvas.create_line(200, 0, 200, 400, fill='red')
         self.__canvas.create_line(0, 200, 400, 200, fill='red')
         circle = 1
@@ -50,12 +50,6 @@ class Target:
         distance = sqrt((x - 200) ** 2 + (y - 200) ** 2)
         self.__score += (6 - distance // 30) * (distance < 6 * 30)
 
-    def __oneshot(self,event):
-        "shoot with the "f" touch"
-        if self.__tries > 0 :
-            self.__shootonce()
-            self.__tries -= 1
-
     def __shoot(self):
         if self.__tries > 1:
             self.__shootonce()
@@ -73,6 +67,11 @@ class Target:
 
     def draw_shot(self, x, y):
         self.__canvas.create_oval(x - 5, y + 5, x + 5, y - 5, fill='black')
+
+    def __oneshot(self,event):
+        if self.__tries > 0 :
+            self.__shootonce()
+            self.__tries -= 1
 
 
 
